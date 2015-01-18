@@ -1,4 +1,4 @@
-var laOca=function(tablero,coleccionFichas,numeroJugadores){
+function LaOca(tablero,coleccionFichas,numeroJugadores){
 	this.tablero = tablero;
 	this.coleccionFichas= coleccionFichas;
 	this.coleccionJugadores=[];
@@ -46,7 +46,9 @@ var laOca=function(tablero,coleccionFichas,numeroJugadores){
 		this.fase=new FaseFinal(this);
 	}
 
-	this.iniciarJuego();}
+	this.iniciarJuego();
+
+}
 
 function FaseInicio(juego){
 	this.titulo="Inicial";
@@ -59,7 +61,8 @@ function FaseInicio(juego){
 	}
 	this.lanzar=function(jugador){
 		console.log("Aún no puedes lanzar los dados.");
-	}}
+	}
+}
 
 function FaseJugar(juego){
 	this.titulo="Jugar";
@@ -72,7 +75,8 @@ function FaseJugar(juego){
 	}
 	this.lanzarPruebas=function(jugador,mov){
 		jugador.turno.lanzarPruebas(jugador,mov);
-	}}
+	}
+}
 
 function FaseFinal(juego){
 	this.titulo="Final";
@@ -82,9 +86,10 @@ function FaseFinal(juego){
 	}
 	this.lanzar=function(jugador){
 		console.log("Se ha acabado la partida.");
-	}}
+	}
+}
 
-var Tablero=function(){
+function Tablero(){
 	this.casillas=[];
 
 	this.iniciarTablero=function(){
@@ -142,7 +147,8 @@ var Tablero=function(){
 	}
 
 	this.iniciarTablero();
-	this.configurarTablero();}
+	this.configurarTablero();
+}
 
 function Casilla(posicion,tablero){
 	this.posicion = posicion;
@@ -156,7 +162,8 @@ function Casilla(posicion,tablero){
 	}
 	this.cae=function(ficha){
 		this.tema.cae(ficha);
-	}}
+	}
+}
 
 function Normal(){
 	this.titulo="Normal";
@@ -165,7 +172,8 @@ function Normal(){
 		// La ficha del jugador cae en una casilla normal
 		console.log(this.mensaje);
 		ficha.cambiarTurno();
-	}}
+	}
+}
 
 function Puente(otroPuente){
 	this.titulo="Puente";
@@ -175,7 +183,8 @@ function Puente(otroPuente){
 		// Mover la ficha al otro puente y decir al jugador que tire de nuevo
 		console.log(this.mensaje);
 		ficha.mover(this.otroPuente);
-	}}
+	}
+}
 
 function Muerte(salidaNormal){
 	this.titulo="Muerte";
@@ -186,7 +195,8 @@ function Muerte(salidaNormal){
 		console.log(this.mensaje);
 		ficha.mover(this.salida);
 		ficha.cambiarTurno();
-	}}
+	}
+}
 
 function Dados(otroDado){
 	this.titulo="Dados";
@@ -196,7 +206,8 @@ function Dados(otroDado){
 		// Mover la ficha al otro dado.
 		console.log(this.mensaje);
 		ficha.mover(this.otroDado);
-	}}
+	}
+}
 
 function Oca(otraOca){
 	this.titulo="Oca";
@@ -206,7 +217,9 @@ function Oca(otraOca){
 		// Mover la ficha a la siguiente oca.
 		console.log(this.mensaje);
 		ficha.mover(this.otraOca);
-	}}
+	}
+}
+
 
 function Posada(){
 	this.titulo="Posada";
@@ -216,7 +229,8 @@ function Posada(){
 		console.log(this.mensaje);
 		ficha.jugador.castigo=this.castigo;
 		ficha.cambiarTurno();
-	}}
+	}
+}
 
 function Pozo(){
 this.titulo="Pozo";
@@ -226,7 +240,8 @@ this.titulo="Pozo";
 		console.log(this.mensaje);
 		ficha.jugador.castigo=this.castigo;
 		ficha.cambiarTurno();
-	}}
+	}
+}
 
 function Laberinto(){
 	this.titulo="Laberinto";
@@ -236,7 +251,10 @@ function Laberinto(){
 		console.log(this.mensaje);
 		ficha.jugador.castigo=this.castigo;
 		ficha.cambiarTurno();
-	}}
+	}
+}
+
+
 
 function Carcel(){
 	this.titulo="Carcel";
@@ -246,7 +264,8 @@ function Carcel(){
 		console.log(this.mensaje);
 		ficha.jugador.castigo=this.castigo;
 		ficha.cambiarTurno();
-	}}
+	}
+}
 
 function Final(){
 	this.titulo="Meta";
@@ -255,9 +274,11 @@ function Final(){
 		this.mensaje="El jugador "+ficha.jugador.nombre+" ha ganado la partida.";
 		console.log(this.mensaje);
 		ficha.terminarPartida();
-	}}
+	}
+}
 
-var Ficha=function(color){
+
+function Ficha(color){
 	this.color = color;
 	this.libre = true;
 	this.casilla=undefined;
@@ -286,7 +307,8 @@ var Ficha=function(color){
 	}
 	this.terminarPartida=function(){
 		this.jugador.terminarPartida();
-	}}
+	}
+}
 
 function MeToca(){
 
@@ -315,7 +337,10 @@ function MeToca(){
 			console.log("Estás en casilla penalizada, te quedan "+jugador.castigo+" turnos sin tirar.");
 			jugador.cambiarTurno();
 		}
-	}}
+	}
+
+
+}
 
 function NoMeToca(){
 
@@ -324,10 +349,11 @@ function NoMeToca(){
 	}
 	this.lanzar=function(jugador,mov){
 		console.log("No es tu turno");
-	}}
+	}
+}
 
 
-var Jugador=function(nombre,juego){
+function Jugador(nombre,juego){
 	this.nombre=nombre;
 	this.ficha=undefined;
 	this.juego=juego;
@@ -347,9 +373,7 @@ var Jugador=function(nombre,juego){
 	};
 	this.terminarPartida=function(){
 		this.juego.terminarPartida(this.juego);
-	};}
+	};
+}
 
-module.exports.Jugador=Jugador;
-module.exports.Ficha=Ficha;
-module.exports.Tablero=Tablero;
-module.exports.laOca=laOca;
+
