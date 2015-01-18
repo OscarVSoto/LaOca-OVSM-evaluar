@@ -1,0 +1,43 @@
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<!--<script src="../lib/jquery-min.js"></script> añadir la librería jquery-->
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="js/laOca.js"></script>
+	<script src="js/juego.js"></script>
+</head>
+
+<body>
+	
+
+	<div id="partida">
+	<img id="myImage" src="imagenes/tablero.jpg"  width="665" height="665" border="0">
+	<img id="fichaRoja" src="imagenes/ficharoja.png" width="25" height="25" style="position:relative;TOP:-50pt;LEFT:-450pt;WIDTH:25;HEIGHT:25;display:none" >
+	<img id="fichaAzul" src="imagenes/fichaazul.png" width="25" height="25" style="position:absolute;TOP:600px;LEFT:127px;WIDTH:25;HEIGHT:25;display:none">
+		<div id="ju1" style="position:absolute;TOP:50px;LEFT:700px"></div>
+		<div id="ju2" style="position:absolute;TOP:225px;LEFT:700px"></div>
+		<div id="jue" style="position:absolute;TOP:400px;LEFT:700px"></div>
+	</div> 
+	<!-- metodo para observar por console.log la posición del raton y escoger las coordenadas para posicionar la ficha -->
+
+	<!--<script type="text/javascript">
+    window.onload = function() {
+      document.onmousemove = function(e) {
+        var x = -(e.clientX/10);
+        var y = -(e.clientY/10);
+        console.log("Altura: "+e.clientY+ "Ancho "+e.clientX);
+        this.body.style.backgroundPosition = x + 'px ' + y + 'px';
+      };
+    };
+  </script> -->
+	<script> 
+// fichaRoja.style.display="";
+		inicio();
+	</script>
+
+
+</body>
+
+</html>
